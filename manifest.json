@@ -1,7 +1,8 @@
 {
   "name": "Universal Asset Vault",
   "short_name": "Vault",
-  "start_url": "/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#0a0c10",
   "theme_color": "#0a0c10",
