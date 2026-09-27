@@ -17,7 +17,7 @@ I-C-4,I.C.4,Valence & Phase States,Bohr shells/orbitals + water phase diagram,PN
 I-C-5,I.C.5,Thermodynamics & Entropy,Entropy arrow + Carnot P-V diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
 I-D-1,I.D.1,Nikola Tesla,Coil schematic + Colorado Springs photo,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
 I-D-2,I.D.2,Faraday & Maxwell,Maxwell's equations + field-line diagrams,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
-I-D-3,I.D.3,"Keely, Reich, Russell (fringe) ",Orgone accumulator schematic + period engravings,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+I-D-3,I.D.3,"Keely, Reich, Russell (fringe)",Orgone accumulator schematic + period engravings,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
 I-E-1,I.E.1,Resonant Cavities,Resonance curve + Tacoma Narrows photo,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
 I-E-2,I.E.2,Cymatics,Chladni figure grid — SHOWPIECE (interactive built),PNG/JPG (diagram or illustration),,Interactive Web App / Canvas Simulation
 I-E-3,I.E.3,Acoustic/EM Entrainment,Brainwave band chart + entrainment diagram,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
@@ -260,3 +260,141 @@ XIII-D-1,XIII.D.1,Yugas,4-ages proportional bars,PNG/JPG (chart or data graphic)
 XIII-E-1,XIII.E.1,Jainism,Blind-men-elephant plate + Loka Purusha,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
 XIII-F-1,XIII.F.1,Kashmir Shaivism,36-tattvas ladder,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
 XIV,XIV,Showpiece,Comparative Subtle Anatomy (switchable overlays),PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XIV-A-1,XIV.A.1,Chakras,7-chakra figure w/ petals/syllables/elements,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XIV-A-2,XIV.A.2,Nadis & Kundalini,Ida/Pingala/Sushumna braid,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XIV-A-3,XIV.A.3,Koshas,5-sheaths nested layers,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XIV-B-1,XIV.B.1,Dantian,3 elixir fields body profile,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XIV-D-1,XIV.D.1,Western subtle bodies,Nested auric-body diagram,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XIV-E-1,XIV.E.1,Egyptian soul-parts,7-part plate w/ hieroglyphs,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XIV-F-1,XIV.F.1,Tsa-lung,Central channel + 5 wheels + drops,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV,XV,Showpiece,Theory Landscape (2-axis consciousness map),PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XV-A-1,XV.A.1,Hard Problem,Easy-vs-hard split figure,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV-B-1,XV.B.1,Panpsychism,Combination-problem figure,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV-C-1,XV.C.1,IIT,Phi illustrated on small networks,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV-D-1,XV.D.1,Orch-OR,Microtubule structure diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV-E-1,XV.E.1,Bohm's implicate order,Ink-drop-in-glycerin demo + hologram analogy,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XV-F-1,XV.F.1,Global Workspace,Theater-metaphor diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV-F-2,XV.F.2,Higher-Order Theories,1st vs 2nd-order state diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XV-F-3-4,XV.F.3-4,Idealism vs Illusionism,Mirror-image pair diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVI,XVI,Showpiece,World Traditions Atlas (map + time slider),PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XVI-A-2,XVI.A.2,Sumerian Me,Divine-powers list table,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XVI-B-1,XVI.B.1,Ennead & Ogdoad,Heliopolitan family tree,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XVI-B-2,XVI.B.2,Isis/Osiris cycle,Myth-sequence stepper,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVI-C-1,XVI.C.1,Ifa,Orisha correspondence table,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XVI-C-3,XVI.C.3,Vodou,Veve symbols redrawn + Lwa families table,PNG/JPG (diagram or illustration),,Structured Data Matrix / Table
+XVI-D-1-4,XVI.D.1-4,Norse & Celtic,Yggdrasil plate + seidr staff + Coligny calendar,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XVI-E-1-3,XVI.E.1-3,Islamic esotericism,Sufi maqamat ladder + Ismaili cosmology,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVI-F-1-2,XVI.F.1-2,Indigenous American,Andean chakana geometry + 3-world cosmology,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVI-G-1,XVI.G.1,Dreamtime,Songlines concept plate,PNG/JPG (diagram or illustration),Cultural-sensitivity note: only openly-published imagery,Dynamic Vector Schematic / Animated SVG
+XVI-H-1,XVI.H.1,Kalevala & Sampo,Forging/theft narrative plate,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVI-H-2,XVI.H.2,Slavic cosmology,Perun/Veles polarity on World Tree,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVI-I-1,XVI.I.1,Mana & Tapu,Concept plate + word-journey diagram,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XVI-I-2,XVI.I.2,Polynesian star compass,32-house compass w/ stars,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVII,XVII,Showpiece,Sky-over-Site simulator (date + precession),PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XVII-A-1,XVII.A.1,Gobekli Tepe,Enclosure plan w/ T-pillar carvings + dating chart,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVII-A-2,XVII.A.2,Stonehenge,Phased construction plan + solstice axis,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVII-A-3,XVII.A.3,Nebra Sky Disk,"Disk photo, keyed phases",JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XVII-A-4,XVII.A.4,Pyramid alignments,Giza plan + Orion-correlation ledger,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XVII-A-5,XVII.A.5,Newgrange,Passage-tomb cross-section w/ roof-box light path,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVII-B-1,XVII.B.1,Ley lines,Watkins map + random-alignment statistical panel,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XVII-B-2,XVII.B.2,Alignment claims generally,Claim scorecard,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XVIII-A-1,XVIII.A.1,Kykeon,Competing-hypotheses ledger + vessel imagery,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XVIII-A-2,XVIII.A.2,Soma/Haoma,Candidate-identity ledger,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XVIII-A-3,XVIII.A.3,Ayahuasca,2-plant botanical plate,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XVIII-B-1,XVIII.B.1,Stoned Ape hypothesis,Claim-vs-evidence ledger,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XVIII-D-1,XVIII.D.1,Modern clinical research,Psilocybin trial timeline + DMN connectivity diagram,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XIX,XIX,Showpiece,Convergence chart of endpoints (10 traditions),"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XIX-A-2,XIX.A.2,Enlightenment & Apotheosis,Cross-cultural apotheosis imagery (Brumidi Capitol dome),JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XIX-A-3,XIX.A.3,Age of Enlightenment (hinge),1614-1789 institutional-split timeline,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XIX-A-4,XIX.A.4,Magnum Opus/Stone,Terminal plate of Great Work Engine,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XIX-B-1,XIX.B.1,New Age,Genealogy tree (Theosophy+NewThought+Jung+East->1970s),PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XX,XX,Showpiece,"Cipher Workbench (live encode/decode, multiple ciphers)",PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XX-A-1,XX.A.1,Temurah family,Atbash/Albam/Atbah mapping plates,PNG/JPG (diagram or illustration),,Interactive Web App / Canvas Simulation
+XX-A-3,XX.A.3,Egyptian cryptographic hieroglyphs,Normal vs enigmatic writing comparison,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XX-A-4-5,XX.A.4-5,"Scytale, Polybius, Caesar",Strip-on-rod + 5x5 grid + shift wheel,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XX-B-1-4,XX.B.1-4,Occult alphabets,Master alphabet chart (7 scripts vs A-Z),"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XX-B-5,XX.B.5,Kameas & sigils,7 planetary squares + traced sigil,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XX-C-1,XX.C.1,Trithemius,Cover-text vs decoded text + tabula recta,PNG/JPG (diagram or illustration),,Interactive Web App / Canvas Simulation
+XX-C-2,XX.C.2,Vigenere,Tabula recta w/ worked example,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XX-C-3,XX.C.3,Bacon's biliteral,2-typeface encoding worked,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XX-C-4,XX.C.4,Copiale Cipher,Manuscript page + decryption excerpt,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XX-D-1-5,XX.D.1-5,Undeciphered scripts,Sign-inventory comparison table + samples,JPG/PNG (photo — public domain or museum source),,Structured Data Matrix / Table
+XX-E-1,XX.E.1,Kryptos,"Sculpture photo + K1-K4 panels, clues marked",JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XX-E-2,XX.E.2,Cicada 3301,Puzzle-chain map + Gematria Primus table + Liber Primus page,JPG/PNG (photo — public domain or museum source),,Structured Data Matrix / Table
+XX-E-3-5,XX.E.3-5,"Beale, Dorabella, Shugborough",Beale key method + Dorabella grid + Shugborough photo,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XX-F-1,XX.F.1,Bible Code,ELS Moby-Dick rebuttal grid,PNG/JPG (diagram or illustration),,Interactive Web App / Canvas Simulation
+XX-F-2,XX.F.2,Code 19,Claim-vs-recount ledger,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXI,XXI,Showpiece,"Elemental Altar Builder (5 traditions, top-down)",PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XXI-A-1-4,XXI.A.1-4,Elemental altar,Top-down layouts per tradition + 4-weapon plate,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-B-1,XXI.B.1,Circle/triangle/lamen,Solomonic operating layout,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-B-2-3,XXI.B.2-3,Athame/censer/bell/seals,Catalog-card plates,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-B-4,XXI.B.4,Tibetan ritual set,Vajra/ghanta/phurba/kapala/damaru plates,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-B-5,XXI.B.5,Taoist ritual set,Fu talisman anatomy + bagua mirror,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-B-6,XXI.B.6,Shinto implements,Gohei folds + shimenawa rope,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-C-1,XXI.C.1,Wands/staffs/rods,Comparative silhouette plate,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXI-C-2,XXI.C.2,Luopan,Ring-by-ring decode,PNG/JPG (diagram or illustration),,Interactive Web App / Canvas Simulation
+XXI-C-3,XXI.C.3,Obelisks,Photo + benben origin plate,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXI-D-1-4,XXI.D.1-4,Resonators,Bowl/gong/fork/bell/sistrum + frequency spectra,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XXI-D-6,XXI.D.6,Quartz,Piezoelectric explainer + healing-claim ledger,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXI-D-7,XXI.D.7,Resonant chambers,Hal Saflieni plan + measurement data,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XXI-E-1-5,XXI.E.1-5,Purification systems,Purification-by-medium matrix,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXI-E-2,XXI.E.2,Kyphi,Edfu recipe inscription,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXI-F-1,XXI.F.1,Cauldron,"Gundestrup Cauldron panels, keyed",JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXI-F-3-5,XXI.F.3-5,"Kamandalu, canopic jars, soma vessels",Catalog plates + 4 Sons of Horus,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII,XXII,Showpiece,Deep-Time Ribbon (parallel timelines 9600BCE-1900CE),PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XXII-A-1,XXII.A.1,Hongshan & Liangzhu jades,Cong/bi cross-sections + pig-dragon photo,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-A-2,XXII.A.2,Jiahu symbols,Signs vs oracle-bone characters,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-3,XXII.A.3,Oracle bones,"Plastron w/ crack pattern, keyed",JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-A-4,XXII.A.4,Sanxingdui,Bronze mask/tree photos,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-A-5,XXII.A.5,Hetu & Luoshu,Dot-notation diagrams + magic square,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-6,XXII.A.6,Early/Later Heaven Bagua,Side-by-side octagons,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-7,XXII.A.7,Wu Xing,Pentagram-in-circle cycles,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-8,XXII.A.8,Stems & Branches,60-cycle sexagenary wheel,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-9,XXII.A.9,Huangdi Neijing,24-hour organ clock,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-10,XXII.A.10,Three Styles,Qimen Dunjia board + Han liuren board photo,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-A-11,XXII.A.11,Feng Shui,Form-School landscape diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-A-13,XXII.A.13,Guodian & Mawangdui,Bamboo/silk manuscript photos,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-A-14,XXII.A.14,Shanhaijing,Illustrated creature plates,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-B-1,XXII.B.1,Indus Valley,Seal gallery + Great Bath plan,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-B-2,XXII.B.2,Rigveda,Mandala structure + deity hymn-count chart,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XXII-B-3-4,XXII.B.3-4,"Shabda Brahman, Sanskrit phonetics",Mouth-map + 14 sutras,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-B-5,XXII.B.5,Vastu Shastra,Vastu Purusha Mandala,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXII-B-7,XXII.B.7,Tamil Siddhars,18-Siddhar table,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXII-C-1-6,XXII.C.1-6,Tibet & Himalaya,Bon swastika + Kalachakra mandala + Dzogchen diagram,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-D-1-6,XXII.D.1-6,Japan,3 Sacred Treasures + seiman + Womb/Diamond mandala + gojuon,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-E-1-6,XXII.E.1-6,Korea/SE Asia/Central Asia,Sak Yant + Angkor equinox photo + Tengri symbols,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXII-F-1-2,XXII.F.1-2,Persia,Zurvan cosmology diagram,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-A-1-2,XXIII.A.1-2,Light Language & Codes,Representative glyph styles + genealogy,PNG/JPG (diagram or illustration),,Interactive Web App / Canvas Simulation
+XXIII-A-3,XXIII.A.3,Akashic Records,Term-journey diagram,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XXIII-B-1,XXIII.B.1,Law of One,Density ladder (1st-8th),PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-B-2,XXIII.B.2,Emerald Tablets of Thoth-Atlantean,2-column contrast w/ medieval tablet,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXIII-B-3,XXIII.B.3,3 Books of Thoth,3-panel disambiguation,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-B-4-5,XXIII.B.4-5,Seth/ACIM/Urantia/Cayce,Publication timeline,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XXIII-C-1,XXIII.C.1,Human Design,Bodygraph (9 centers/64 gates) + genealogy,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-C-2,XXIII.C.2,Gene Keys,64-keys spectrum table,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXIII-C-3,XXIII.C.3,Enneagram,9-point figure w/ hexad,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-C-4,XXIII.C.4,Fourth Way,Ray of Creation ladder,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-C-5,XXIII.C.5,Dreamspell,Divergence chart vs Tzolkin,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XXIII-C-6,XXIII.C.6,New Thought/LoA,Genealogy diagram,PNG/JPG (diagram/flowchart),,Dynamic Vector Schematic / Animated SVG
+XXIII-D-1,XXIII.D.1,Chaos Magic,Chaosphere plate,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIII-D-4,XXIII.D.4,Ancient Astronauts,Claim-vs-archaeology ledger,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXIV,XXIV,Showpiece 1,"Traditional Chart Engine (whole-sign, dignities, sect)",PNG/JPG (static substitute — original spec was interactive),,Interactive Web App / Canvas Simulation
+XXIV,XXIV,Showpiece 2,"Transmission Map (Mesopotamia->Europe, dated routes)",PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-A-1-6,XXIV.A.1-6,Mesopotamian,MUL.APIN tablet + constellation lists + 410BCE horoscope,JPG/PNG (photo — public domain or museum source),,Structured Data Matrix / Table
+XXIV-B-1-4,XXIV.B.1-4,Egyptian,"Decan star clock + Dendera Zodiac, keyed",JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXIV-C-1-8,XXIV.C.1-8,Hellenistic,Ptolemy's cosmos + author timeline strip,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-C-2,XXIV.C.2,Precession,"26,000-yr cone + pole-star succession",PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-D-1-6,XXIV.D.1-6,Persian & Islamic,Abu Ma'shar great-conjunction cycle chart,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XXIV-E-1-6,XXIV.E.1-6,Jyotisha,South/North Indian chart formats + 27-nakshatra wheel + dasha bar,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
+XXIV-F-1-5,XXIV.F.1-5,Chinese astral,28 xiu ring + Dunhuang star chart,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXIV-G-1-3,XXIV.G.1-3,Mesoamerican,Dresden Codex Venus pages + Calendar Round gears,JPG/PNG (photo — public domain or museum source),,Interactive Web App / Canvas Simulation
+XXIV-H-1-10,XXIV.H.1-10,Medieval & Renaissance,Tycho's instruments + Lilly's Great Fire hieroglyph,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXIV-I-1,XXIV.I.1,7 planets & sect,Chaldean-order ladder,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-I-3,XXIV.I.3,House systems,5 overlaid wheels,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-I-4,XXIV.I.4,Ptolemaic aspects,Aspect polygon plate,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-I-5,XXIV.I.5,Essential dignities,Full dignity table,"N/A — text table, not an image asset",,Structured Data Matrix / Table
+XXIV-I-6,XXIV.I.6,Lots,Fortune/Spirit construction geometry,PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-I-7,XXIV.I.7,Behenian stars,15-star table (stones/plants/sigils),JPG/PNG (photo — public domain or museum source),,Structured Data Matrix / Table
+XXIV-I-8,XXIV.I.8,Branches & Zodiac Man,Melothesia figure,JPG/PNG (photo — public domain or museum source),,High-Res Historical / Archive Visual
+XXIV-I-10,XXIV.I.10,Astrolabe,Exploded plate (mater/plates/rete/rule/alidade),PNG/JPG (diagram or illustration),,Dynamic Vector Schematic / Animated SVG
+XXIV-J-1-3,XXIV.J.1-3,Boundary node,Cutoff timeline + Carlson study chart,PNG/JPG (chart or data graphic),,Dynamic Vector Schematic / Animated SVG
