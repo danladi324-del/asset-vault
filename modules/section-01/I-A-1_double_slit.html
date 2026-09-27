@@ -125,10 +125,12 @@
         <canvas id="bloch-canvas"></canvas>
       </div>
       <p class="caption">
-        Equal superposition state on the equator of the Bloch sphere —
-        drag to orbit the view. The vector's azimuth is driven by the same
-        phase angle below, the phase&nbsp;&phi; in
-        |&psi;&rang; = (|0&rang; + e<sup>i&phi;</sup>|1&rang;)/&radic;2.
+        A pure qubit state on the Bloch sphere — drag to orbit the view.
+        Latitude &theta; sets the amplitude weighting between |0&rang; and
+        |1&rang;; phase &phi; (shared with the double-slit tab) sets the
+        relative phase: |&psi;&rang; = cos(&theta;/2)|0&rang; +
+        e<sup>i&phi;</sup>sin(&theta;/2)|1&rang;. The ring marks the
+        equator — the phase-rotation plane.
       </p>
     </div>
   </main>
@@ -139,10 +141,15 @@
       <input type="range" id="rate" min="1" max="60" step="1" value="12">
       <span class="val" id="rate-val">12/s</span>
     </div>
+    <div class="control-row" id="theta-row">
+      <label for="theta">Latitude &theta;</label>
+      <input type="range" id="theta" min="0" max="180" step="1" value="60">
+      <span class="val" id="theta-val">60&deg;</span>
+    </div>
     <div class="control-row">
-      <label for="phase">Phase angle</label>
-      <input type="range" id="phase" min="0" max="360" step="1" value="0">
-      <span class="val" id="phase-val">0&deg;</span>
+      <label for="phase">Phase &phi;</label>
+      <input type="range" id="phase" min="0" max="360" step="1" value="45">
+      <span class="val" id="phase-val">45&deg;</span>
     </div>
     <button class="reset-btn" id="reset-btn">Reset buildup</button>
   </div>
@@ -163,14 +170,17 @@
 
     // ---------- shared state ----------
     const state = {
-      rate: 12,     // particles per second
-      phaseDeg: 0
+      rate: 12,      // particles per second
+      phaseDeg: 45,  // phi
+      thetaDeg: 60   // latitude
     };
 
     const rateInput = document.getElementById("rate");
     const phaseInput = document.getElementById("phase");
+    const thetaInput = document.getElementById("theta");
     const rateVal = document.getElementById("rate-val");
     const phaseVal = document.getElementById("phase-val");
+    const thetaVal = document.getElementById("theta-val");
 
     rateInput.addEventListener("input", () => {
       state.rate = Number(rateInput.value);
@@ -181,6 +191,11 @@
       phaseVal.textContent = state.phaseDeg + "\u00B0";
       resetBuildup(); // re-run from zero so the shifted fringes read cleanly
       updateBlochVector();
+    });
+    thetaInput.addEventListener("input", () => {
+      state.thetaDeg = Number(thetaInput.value);
+      thetaVal.textContent = state.thetaDeg + "\u00B0";
+      updateBlochVector(); // latitude only affects the Bloch panel
     });
 
     // ---------- tabs ----------
@@ -298,16 +313,15 @@
       const sphereMat = new THREE.MeshBasicMaterial({ color: 0x30363d, wireframe: true, transparent: true, opacity: 0.55 });
       scene.add(new THREE.Mesh(sphereGeo, sphereMat));
 
-      // axes
-      const axisMat = (color) => new THREE.LineBasicMaterial({ color });
-      function axisLine(dir, color) {
-        const pts = [dir.clone().multiplyScalar(-1.25), dir.clone().multiplyScalar(1.25)];
-        const geo = new THREE.BufferGeometry().setFromPoints(pts);
-        scene.add(new THREE.Line(geo, axisMat(color)));
-      }
-      axisLine(new THREE.Vector3(1, 0, 0), 0xef4444); // X - red
-      axisLine(new THREE.Vector3(0, 0, 1), 0x22c55e); // Y (Bloch) mapped to three's Z - green
-      axisLine(new THREE.Vector3(0, 1, 0), 0x38bdf8); // Z (Bloch, |0>/|1> axis) mapped to three's Y - accent blue
+      // cardinal axes — red = X, green = Y (|0>/|1> axis), blue = Z
+      scene.add(new THREE.AxesHelper(1.3));
+
+      // equator ring — highlights the phase-rotation plane
+      const ringGeo = new THREE.RingGeometry(0.99, 1.01, 64);
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.6 });
+      const equator = new THREE.Mesh(ringGeo, ringMat);
+      equator.rotation.x = Math.PI / 2;
+      scene.add(equator);
 
       // poles
       function poleDot(y, color) {
@@ -332,10 +346,13 @@
 
     function updateBlochVector() {
       if (!blochReady) return;
+      const theta = (state.thetaDeg * Math.PI) / 180;
       const phi = (state.phaseDeg * Math.PI) / 180;
-      // theta fixed at pi/2 -> equal superposition; vector traces the equator as phi varies
-      const dir = new THREE.Vector3(Math.cos(phi), 0, Math.sin(phi));
-      vectorArrow.setDirection(dir.normalize());
+      // |0> at +Y (top), |1> at -Y (bottom) — matches Three.js Y-up convention
+      const x = Math.sin(theta) * Math.cos(phi);
+      const y = Math.cos(theta);
+      const z = Math.sin(theta) * Math.sin(phi);
+      vectorArrow.setDirection(new THREE.Vector3(x, y, z).normalize());
     }
 
     function onBlochShown() {
