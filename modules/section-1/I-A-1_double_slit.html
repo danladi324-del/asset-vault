@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>I-A-1: Double-Slit &amp; Bloch Sphere</title>
+<link rel="stylesheet" href="../../core/app.css">
+<style>
+  main { max-width: 720px; margin: 0 auto; padding-top: 2.75rem; padding-bottom: 2rem; }
+  .entry-label { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.02em; }
+  h1 { font-size: 1.15rem; margin-top: 0.15rem; }
+  .lede { font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; margin: 0.5rem 0 1rem; }
+
+  .figure-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  @media (max-width: 560px) {
+    .figure-grid { grid-template-columns: 1fr; }
+  }
+
+  .figure {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem;
+  }
+  .figure-title { font-size: 0.75rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .figure canvas, .figure svg {
+    display: block;
+    width: 100%;
+    height: 190px;
+    background: #000;
+    border-radius: 5px;
+    touch-action: none;
+  }
+  .figure-caption { font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; margin-top: 0.5rem; }
+  .fallback-note { font-size: 0.68rem; color: #d29922; margin-top: 0.35rem; }
+
+  .panel-controls {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.6rem 1rem;
+    align-items: end;
+  }
+  .panel-controls .field { display: flex; flex-direction: column; gap: 0.25rem; }
+  .panel-controls label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+  }
+  .panel-controls .val { color: var(--text); font-variant-numeric: tabular-nums; }
+  .panel-controls input[type="range"] { accent-color: var(--accent); }
+  .reset-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+</style>
+</head>
+<body>
+  <a href="../../index.html" class="back-link">&larr; Vault</a>
+
+  <main>
+    <div class="entry-label">Section I.A.1</div>
+    <h1>Wave-Function Collapse &amp; Superposition</h1>
+    <p class="lede">
+      Two views of the same underlying phase: a double-slit buildup, where
+      the fringe pattern only emerges from many independent detections,
+      and a Bloch sphere, where that phase is the azimuth of a two-level
+      qubit's state vector. The &phi; control below drives both.
+    </p>
+
+    <div class="figure-grid">
+      <div class="figure">
+        <div class="figure-title">Double-Slit Buildup</div>
+        <canvas id="slit-canvas"></canvas>
+        <div class="figure-caption">
+          Each dot is an independent detection event, sampled from
+          |A + B|&sup2;. Fringes appear only in the statistics of many —
+          no single particle carries the pattern.
+        </div>
+      </div>
+
+      <div class="figure">
+        <div class="figure-title">Bloch Sphere</div>
+        <div id="bloch-mount">
+          <canvas id="bloch-canvas"></canvas>
+        </div>
+        <div class="figure-caption">
+          |&psi;&rang; = cos(&theta;/2)|0&rang; + e<sup>i&phi;</sup>sin(&theta;/2)|1&rang;.
+          Drag to orbit.
+        </div>
+        <div class="fallback-note" id="bloch-fallback-note" hidden>
+          Live 3D view unavailable — static reference diagram shown.
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-controls">
+      <div class="field">
+        <label>Emission rate <span class="val" id="rate-val">12/s</span></label>
+        <input type="range" id="rate" min="1" max="60" step="1" value="12">
+      </div>
+      <div class="field">
+        <label>Latitude &theta; <span class="val" id="theta-val">60&deg;</span></label>
+        <input type="range" id="theta" min="0" max="180" step="1" value="60">
+      </div>
+      <div class="field">
+        <label>Phase &phi; <span class="val" id="phase-val">45&deg;</span></label>
+        <input type="range" id="phase" min="0" max="360" step="1" value="45">
+      </div>
+      <button class="reset-btn" id="reset-btn">Reset buildup</button>
+    </div>
+  </main>
+
+  <!-- Static, dependency-free fallback for no-JS environments: both figures as inline SVG -->
+  <noscript>
+    <main style="padding-top:1rem;">
+      <p class="lede">JavaScript is off — showing static reference diagrams instead of the live simulation.</p>
+      <div class="figure-grid">
+        <div class="figure">
+          <div class="figure-title">Double-Slit Interference (static)</div>
+          <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="background:#000;border-radius:5px;">
+            <rect x="70" y="0" width="6" height="70" fill="#30363d"/>
+            <rect x="70" y="80" width="6" height="20" fill="#30363d"/>
+            <rect x="70" y="120" width="6" height="70" fill="#30363d"/>
+            <path d="M76,85 Q160,40 260,95" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.5"/>
+            <path d="M76,105 Q160,150 260,95" stroke="#38bdf8" stroke-width="1" fill="none" opacity="0.5"/>
+            <path d="M260,20 C 268,45 252,55 260,80 C 268,105 252,115 260,140 C 268,160 252,175 260,190"
+                  stroke="#38bdf8" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="figure">
+          <div class="figure-title">Bloch Sphere (static)</div>
+          <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="background:#000;border-radius:5px;">
+            <ellipse cx="150" cy="95" rx="70" ry="70" stroke="#30363d" fill="none"/>
+            <ellipse cx="150" cy="95" rx="70" ry="20" stroke="#38bdf8" fill="none" opacity="0.6"/>
+            <line x1="150" y1="15" x2="150" y2="175" stroke="#48515c"/>
+            <line x1="70" y1="95" x2="230" y2="95" stroke="#48515c"/>
+            <text x="140" y="10" fill="#f0f6fc" font-size="11" font-family="monospace">|0&#10217;</text>
+            <text x="140" y="188" fill="#f0f6fc" font-size="11" font-family="monospace">|1&#10217;</text>
+            <line x1="150" y1="95" x2="205" y2="60" stroke="#38bdf8" stroke-width="2.5"/>
+            <circle cx="205" cy="60" r="4" fill="#38bdf8"/>
+          </svg>
+        </div>
+      </div>
+    </main>
+  </noscript>
+
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.159.0/examples/jsm/"
+  } }
+  </script>
+
+  <script type="module">
+    // ---------- shared state ----------
+    const state = { rate: 12, phaseDeg: 45, thetaDeg: 60 };
+
+    const rateInput = document.getElementById("rate");
+    const phaseInput = document.getElementById("phase");
+    const thetaInput = document.getElementById("theta");
+    const rateVal = document.getElementById("rate-val");
+    const phaseVal = document.getElementById("phase-val");
+    const thetaVal = document.getElementById("theta-val");
+
+    rateInput.addEventListener("input", () => {
+      state.rate = Number(rateInput.value);
+      rateVal.textContent = state.rate + "/s";
+    });
+    phaseInput.addEventListener("input", () => {
+      state.phaseDeg = Number(phaseInput.value);
+      phaseVal.textContent = state.phaseDeg + "\u00B0";
+      resetBuildup();
+      updateBlochVector();
+    });
+    thetaInput.addEventListener("input", () => {
+      state.thetaDeg = Number(thetaInput.value);
+      thetaVal.textContent = state.thetaDeg + "\u00B0";
+      updateBlochVector();
+    });
+
+    // ================= DOUBLE-SLIT BUILDUP (fully local, no network dependency) =================
+    const slitCanvas = document.getElementById("slit-canvas");
+    const slitCtx = slitCanvas.getContext("2d");
+    const countHolder = { n: 0 };
+
+    function fitCanvas(canvas) {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { w: rect.width, h: rect.height };
+    }
+
+    function intensity(u, phaseDeg) {
+      const fringeFreq = 14, envelopeFreq = 3;
+      const phase = (phaseDeg * Math.PI) / 180;
+      const beta = Math.PI * envelopeFreq * u;
+      const alpha = 2 * Math.PI * fringeFreq * u + phase / 2;
+      const sincB = beta === 0 ? 1 : Math.sin(beta) / beta;
+      const cosA = Math.cos(alpha);
+      return sincB * sincB * cosA * cosA;
+    }
+
+    function sampleU(phaseDeg, maxTries = 60) {
+      for (let i = 0; i < maxTries; i++) {
+        const u = Math.random() - 0.5;
+        if (Math.random() < intensity(u, phaseDeg)) return u;
+      }
+      return null;
+    }
+
+    let slitDims = fitCanvas(slitCanvas);
+
+    function clearSlit() {
+      slitCtx.fillStyle = "#000000";
+      slitCtx.fillRect(0, 0, slitDims.w, slitDims.h);
+      slitCtx.fillStyle = "rgba(240,246,252,0.15)";
+      slitCtx.fillRect(slitDims.w * 0.47, 0, slitDims.w * 0.008, slitDims.h * 0.08);
+      slitCtx.fillRect(slitDims.w * 0.53, 0, slitDims.w * 0.008, slitDims.h * 0.08);
+      countHolder.n = 0;
+    }
+    function resetBuildup() { clearSlit(); }
+    document.getElementById("reset-btn").addEventListener("click", resetBuildup);
+    window.addEventListener("resize", () => { slitDims = fitCanvas(slitCanvas); clearSlit(); });
+    clearSlit();
+
+    function drawGlow(x, y) {
+      const r = 3.2;
+      const g = slitCtx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, "rgba(224,247,255,0.9)");
+      g.addColorStop(0.4, "rgba(56,189,248,0.55)");
+      g.addColorStop(1, "rgba(56,189,248,0)");
+      slitCtx.fillStyle = g;
+      slitCtx.beginPath();
+      slitCtx.arc(x, y, r, 0, Math.PI * 2);
+      slitCtx.fill();
+    }
+
+    let emitAcc = 0, lastT = performance.now();
+    function slitTick(now) {
+      const dt = (now - lastT) / 1000; lastT = now;
+      emitAcc += state.rate * dt;
+      slitCtx.globalCompositeOperation = "lighter"; // additive: dense fringes read visibly brighter
+      while (emitAcc >= 1) {
+        emitAcc -= 1;
+        const u = sampleU(state.phaseDeg);
+        if (u !== null) {
+          const x = (u + 0.5) * slitDims.w;
+          const y = slitDims.h * (0.14 + Math.random() * 0.72);
+          drawGlow(x, y);
+          countHolder.n++;
+        }
+      }
+      slitCtx.globalCompositeOperation = "source-over";
+      requestAnimationFrame(slitTick);
+    }
+    requestAnimationFrame(slitTick);
+
+    // ================= BLOCH SPHERE (network-dependent; falls back to static SVG) =================
+    // Placeholder until Three.js loads and rebinds this to the real implementation.
+    // If the CDN fails, this stays a no-op — the static SVG fallback takes over instead.
+    let updateBlochVector = () => {};
+
+    function showBlochFallback() {
+      const mount = document.getElementById("bloch-mount");
+      mount.innerHTML = `
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="background:#000;border-radius:5px;width:100%;height:190px;display:block;">
+          <ellipse cx="150" cy="95" rx="70" ry="70" stroke="#30363d" fill="none"/>
+          <ellipse cx="150" cy="95" rx="70" ry="20" stroke="#38bdf8" fill="none" opacity="0.6"/>
+          <line x1="150" y1="15" x2="150" y2="175" stroke="#48515c"/>
+          <line x1="70" y1="95" x2="230" y2="95" stroke="#48515c"/>
+          <text x="140" y="10" fill="#f0f6fc" font-size="11" font-family="monospace">|0&#10217;</text>
+          <text x="140" y="188" fill="#f0f6fc" font-size="11" font-family="monospace">|1&#10217;</text>
+          <line x1="150" y1="95" x2="205" y2="60" stroke="#38bdf8" stroke-width="2.5"/>
+          <circle cx="205" cy="60" r="4" fill="#38bdf8"/>
+        </svg>`;
+      document.getElementById("bloch-fallback-note").hidden = false;
+    }
+
+    async function initBloch() {
+      try {
+        const THREE = await import("three");
+        const { OrbitControls } = await import("three/addons/controls/OrbitControls.js");
+        const { EffectComposer } = await import("three/addons/postprocessing/EffectComposer.js");
+        const { RenderPass } = await import("three/addons/postprocessing/RenderPass.js");
+        const { UnrealBloomPass } = await import("three/addons/postprocessing/UnrealBloomPass.js");
+
+        const canvas = document.getElementById("bloch-canvas");
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0c10);
+        const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 50);
+        camera.position.set(2.2, 1.5, 2.2);
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+        // lighting — soft ambient fill + a cool point light for real shading on the sphere
+        scene.add(new THREE.AmbientLight(0x334155, 0.6));
+        const keyLight = new THREE.PointLight(0x38bdf8, 2.2, 12, 2);
+        keyLight.position.set(2.5, 2, 1.5);
+        scene.add(keyLight);
+        const rimLight = new THREE.PointLight(0xffffff, 0.8, 12, 2);
+        rimLight.position.set(-2, -1, -2);
+        scene.add(rimLight);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+        controls.minDistance = 1.5;
+        controls.maxDistance = 4.5;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.6; // slow idle drift; any drag interrupts it naturally
+
+        // glassy, lit sphere shell instead of a flat wireframe
+        scene.add(new THREE.Mesh(
+          new THREE.SphereGeometry(1, 48, 32),
+          new THREE.MeshPhysicalMaterial({
+            color: 0x1b2735, transparent: true, opacity: 0.38,
+            roughness: 0.25, metalness: 0.1, clearcoat: 0.6, clearcoatRoughness: 0.3
+          })
+        ));
+        // faint structural wireframe on top, for legibility against the glass
+        scene.add(new THREE.Mesh(
+          new THREE.SphereGeometry(1.002, 24, 16),
+          new THREE.MeshBasicMaterial({ color: 0x30363d, wireframe: true, transparent: true, opacity: 0.35 })
+        ));
+        scene.add(new THREE.AxesHelper(1.25));
+        const equator = new THREE.Mesh(
+          new THREE.RingGeometry(0.99, 1.01, 64),
+          new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.6 })
+        );
+        equator.rotation.x = Math.PI / 2;
+        scene.add(equator);
+
+        // emissive state vector — bright core + cone tip, tuned to clear the bloom threshold
+        const arrow = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0), 1, 0x9fe8ff, 0.16, 0.09);
+        arrow.line.material.linewidth = 2;
+        scene.add(arrow);
+        const tipGlow = new THREE.PointLight(0x9fe8ff, 1.4, 3, 2);
+        scene.add(tipGlow);
+
+        const composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        const bloomPass = new UnrealBloomPass(
+          new THREE.Vector2(canvas.clientWidth, canvas.clientHeight), 0.75, 0.4, 0.18
+        );
+        composer.addPass(bloomPass);
+
+        function resize() {
+          const w = canvas.clientWidth, h = canvas.clientHeight;
+          camera.aspect = w / h; camera.updateProjectionMatrix();
+          renderer.setSize(w, h, false);
+          composer.setSize(w, h);
+          bloomPass.resolution.set(w, h);
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        function setVector() {
+          const theta = (state.thetaDeg * Math.PI) / 180;
+          const phi = (state.phaseDeg * Math.PI) / 180;
+          const dir = new THREE.Vector3(
+            Math.sin(theta) * Math.cos(phi),
+            Math.cos(theta),
+            Math.sin(theta) * Math.sin(phi)
+          ).normalize();
+          arrow.setDirection(dir);
+          tipGlow.position.copy(dir);
+        }
+        updateBlochVector = setVector; // rebind now that THREE is loaded
+        setVector();
+
+        (function loop() {
+          controls.update();
+          composer.render();
+          requestAnimationFrame(loop);
+        })();
+      } catch (err) {
+        showBlochFallback();
+      }
+    }
+    initBloch();
+  </script>
+</body>
+</html>

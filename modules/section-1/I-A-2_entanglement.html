@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>I-A-2: Entanglement &amp; Non-Locality</title>
+<link rel="stylesheet" href="../../core/app.css">
+<style>
+  main { max-width: 720px; margin: 0 auto; padding-top: 2.75rem; padding-bottom: 2rem; }
+  .entry-label { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.02em; }
+  h1 { font-size: 1.15rem; margin-top: 0.15rem; }
+  .lede { font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; margin: 0.5rem 0 1rem; }
+
+  .figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  @media (max-width: 560px) { .figure-grid { grid-template-columns: 1fr; } }
+
+  .figure { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem; }
+  .figure-title { font-size: 0.75rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .figure canvas { display: block; width: 100%; height: 190px; background: #000; border-radius: 5px; touch-action: none; }
+  .figure-caption { font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; margin-top: 0.5rem; }
+  .fallback-note { font-size: 0.68rem; color: #d29922; margin-top: 0.35rem; }
+
+  .panel-controls {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.75rem; margin-top: 0.75rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.6rem 1rem; align-items: end;
+  }
+  .panel-controls .field { display: flex; flex-direction: column; gap: 0.25rem; }
+  .panel-controls label { font-size: 0.72rem; color: var(--text-dim); display: flex; justify-content: space-between; }
+  .panel-controls .val { color: var(--text); font-variant-numeric: tabular-nums; }
+  .panel-controls input[type="range"] { accent-color: var(--accent); }
+  .action-btn {
+    background: transparent; border: 1px solid var(--accent); color: var(--accent);
+    border-radius: 6px; padding: 0.5rem 0.8rem; font-size: 0.78rem; font-weight: 600;
+  }
+  .chsh-result {
+    margin-top: 0.6rem; padding: 0.6rem; border-radius: 6px; background: #0d1117;
+    border: 1px solid var(--border); font-size: 0.75rem; line-height: 1.6; display: none;
+  }
+  .chsh-result .s-value { color: var(--accent); font-weight: 700; font-size: 0.95rem; }
+  .chsh-result.violates { border-color: var(--accent); }
+</style>
+</head>
+<body>
+  <a href="../../index.html" class="back-link">&larr; Vault</a>
+
+  <main>
+    <div class="entry-label">Section I.A.2</div>
+    <h1>Entanglement &amp; Non-Locality</h1>
+    <p class="lede">
+      Two particles, measured independently at angles &alpha; and &beta;,
+      show correlation no local hidden-variable theory can reproduce.
+      Adjust the angle difference and watch the empirical correlation
+      track the quantum prediction &minus;cos(&alpha;&minus;&beta;).
+    </p>
+
+    <div class="figure-grid">
+      <div class="figure">
+        <div class="figure-title">Paired-Spin Diagram</div>
+        <div id="spin-mount"><canvas id="spin-canvas"></canvas></div>
+        <div class="figure-caption">
+          Two entangled spins, measured along independent axes &alpha; and
+          &beta;. Drag to orbit.
+        </div>
+        <div class="fallback-note" id="spin-fallback-note" hidden>
+          Live 3D view unavailable — static reference diagram shown.
+        </div>
+      </div>
+
+      <div class="figure">
+        <div class="figure-title">CHSH Correlation Buildup</div>
+        <canvas id="corr-canvas"></canvas>
+        <div class="figure-caption">
+          Each glowing hit is one trial's outcome product (A&middot;B).
+          The line is the quantum prediction; dots should cluster around it.
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-controls">
+      <div class="field">
+        <label>Alice's angle &alpha; <span class="val" id="alpha-val">0&deg;</span></label>
+        <input type="range" id="alpha" min="0" max="180" step="1" value="0">
+      </div>
+      <div class="field">
+        <label>Bob's angle &beta; <span class="val" id="beta-val">22&deg;</span></label>
+        <input type="range" id="beta" min="0" max="180" step="1" value="22">
+      </div>
+      <button class="action-btn" id="chsh-btn">Run CHSH test (S)</button>
+    </div>
+
+    <div class="chsh-result" id="chsh-result"></div>
+  </main>
+
+  <noscript>
+    <main style="padding-top:1rem;">
+      <p class="lede">JavaScript is off — showing a static reference diagram instead of the live simulation.</p>
+      <div class="figure-grid">
+        <div class="figure">
+          <div class="figure-title">Paired-Spin Diagram (static)</div>
+          <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="background:#000;border-radius:5px;">
+            <circle cx="95" cy="95" r="34" fill="none" stroke="#38bdf8" stroke-width="2"/>
+            <circle cx="205" cy="95" r="34" fill="none" stroke="#38bdf8" stroke-width="2"/>
+            <line x1="95" y1="95" x2="95" y2="55" stroke="#9fe8ff" stroke-width="2.5"/>
+            <line x1="205" y1="95" x2="223" y2="65" stroke="#9fe8ff" stroke-width="2.5"/>
+            <line x1="129" y1="95" x2="171" y2="95" stroke="#48515c" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+        <div class="figure">
+          <div class="figure-title">CHSH Correlation (static)</div>
+          <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="background:#000;border-radius:5px;">
+            <path d="M10,95 C 80,10 220,180 290,95" stroke="#38bdf8" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </main>
+  </noscript>
+
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.159.0/examples/jsm/"
+  } }
+  </script>
+
+  <script type="module">
+    const SPRITE_URL = "../../assets/textures/_shared_particle_glow.png";
+
+    // ---------- shared state ----------
+    const state = { alphaDeg: 0, betaDeg: 22 };
+    const alphaInput = document.getElementById("alpha");
+    const betaInput = document.getElementById("beta");
+    const alphaVal = document.getElementById("alpha-val");
+    const betaVal = document.getElementById("beta-val");
+
+    let onAngleChange = () => {};
+    alphaInput.addEventListener("input", () => {
+      state.alphaDeg = Number(alphaInput.value);
+      alphaVal.textContent = state.alphaDeg + "\u00B0";
+      onAngleChange();
+    });
+    betaInput.addEventListener("input", () => {
+      state.betaDeg = Number(betaInput.value);
+      betaVal.textContent = state.betaDeg + "\u00B0";
+      onAngleChange();
+    });
+
+    // ================= CHSH CORRELATION BUILDUP (Canvas2D, local, reuses shared sprite) =================
+    const corrCanvas = document.getElementById("corr-canvas");
+    const corrCtx = corrCanvas.getContext("2d");
+    let corrDims = { w: 0, h: 0 };
+
+    function fitCanvas(canvas) {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { w: rect.width, h: rect.height };
+    }
+
+    const spriteImg = new Image();
+    let spriteReady = false;
+    spriteImg.onload = () => { spriteReady = true; };
+    spriteImg.onerror = () => { spriteReady = false; }; // additive dot fallback below if sprite fails
+    spriteImg.src = SPRITE_URL;
+
+    function drawHit(x, y, size) {
+      corrCtx.globalCompositeOperation = "lighter";
+      if (spriteReady) {
+        corrCtx.drawImage(spriteImg, x - size / 2, y - size / 2, size, size);
+      } else {
+        const g = corrCtx.createRadialGradient(x, y, 0, x, y, size / 2);
+        g.addColorStop(0, "rgba(224,247,255,0.9)");
+        g.addColorStop(1, "rgba(56,189,248,0)");
+        corrCtx.fillStyle = g;
+        corrCtx.beginPath();
+        corrCtx.arc(x, y, size / 2, 0, Math.PI * 2);
+        corrCtx.fill();
+      }
+      corrCtx.globalCompositeOperation = "source-over";
+    }
+
+    function theoryE(diffDeg) {
+      return -Math.cos((diffDeg * Math.PI) / 180);
+    }
+
+    function drawTheoryCurve() {
+      const { w, h } = corrDims;
+      corrCtx.strokeStyle = "rgba(159,232,255,0.55)";
+      corrCtx.lineWidth = 1.5;
+      corrCtx.beginPath();
+      for (let px = 0; px <= w; px++) {
+        const diff = (px / w) * 360 - 180; // map canvas width to -180..180 deg
+        const e = theoryE(diff);
+        const y = h / 2 - (e * h * 0.42);
+        if (px === 0) corrCtx.moveTo(px, y); else corrCtx.lineTo(px, y);
+      }
+      corrCtx.stroke();
+    }
+
+    function clearCorr() {
+      corrCtx.fillStyle = "#000000";
+      corrCtx.fillRect(0, 0, corrDims.w, corrDims.h);
+      drawTheoryCurve();
+    }
+
+    window.addEventListener("resize", () => { corrDims = fitCanvas(corrCanvas); clearCorr(); });
+    corrDims = fitCanvas(corrCanvas);
+    clearCorr();
+
+    // simulate one measurement pair at given angle difference; returns product A*B
+    function sampleTrial(diffDeg) {
+      const diffRad = (diffDeg * Math.PI) / 180;
+      const A = Math.random() < 0.5 ? 1 : -1;
+      const pSame = (1 - Math.cos(diffRad)) / 2;
+      const B = Math.random() < pSame ? A : -A;
+      return A * B;
+    }
+
+    let trialAcc = 0, lastTrialT = performance.now();
+    function corrTick(now) {
+      const dt = (now - lastTrialT) / 1000; lastTrialT = now;
+      trialAcc += 10 * dt; // ~10 trials/sec, deliberately slow enough to watch accumulate
+      while (trialAcc >= 1) {
+        trialAcc -= 1;
+        const diff = state.alphaDeg - state.betaDeg;
+        const product = sampleTrial(diff);
+        const { w, h } = corrDims;
+        const px = ((diff + 180) % 360 / 360) * w;
+        const py = h / 2 - (product * h * 0.42) + (Math.random() - 0.5) * 8;
+        drawHit(px, py, 7);
+      }
+      requestAnimationFrame(corrTick);
+    }
+    requestAnimationFrame(corrTick);
+
+    onAngleChange = () => { clearCorr(); };
+
+    // ---------- CHSH S computation (fixed canonical angles, large-N estimate) ----------
+    document.getElementById("chsh-btn").addEventListener("click", () => {
+      const N = 4000;
+      const settings = { a: 0, aPrime: 45, b: 22.5, bPrime: 67.5 };
+      function estimateE(alphaDeg, betaDeg) {
+        let sum = 0;
+        for (let i = 0; i < N; i++) sum += sampleTrial(alphaDeg - betaDeg);
+        return sum / N;
+      }
+      const Eab = estimateE(settings.a, settings.b);
+      const EabP = estimateE(settings.a, settings.bPrime);
+      const EaPb = estimateE(settings.aPrime, settings.b);
+      const EaPbP = estimateE(settings.aPrime, settings.bPrime);
+      const S = Eab - EabP + EaPb + EaPbP;
+
+      const box = document.getElementById("chsh-result");
+      box.hidden = false;
+      box.classList.toggle("violates", Math.abs(S) > 2);
+      box.innerHTML = `
+        S = E(a,b) &minus; E(a,b&prime;) + E(a&prime;,b) + E(a&prime;,b&prime;)<br>
+        <span class="s-value">S &asymp; ${S.toFixed(3)}</span><br>
+        Classical (local hidden-variable) bound: |S| &le; 2 &nbsp;&middot;&nbsp;
+        Quantum (Tsirelson) bound: |S| &le; 2&radic;2 &asymp; 2.828<br>
+        ${Math.abs(S) > 2
+          ? "This sample violates the classical bound — consistent with quantum entanglement."
+          : "Statistical noise from a small sample can land under 2 even with real correlation; re-run to check."}
+      `;
+    });
+
+    // ================= PAIRED-SPIN DIAGRAM (Three.js; falls back to static SVG) =================
+    let updateSpinVectors = () => {};
+
+    function showSpinFallback() {
+      const mount = document.getElementById("spin-mount");
+      mount.innerHTML = `
+        <svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" style="background:#000;border-radius:5px;width:100%;height:190px;display:block;">
+          <circle cx="95" cy="95" r="34" fill="none" stroke="#38bdf8" stroke-width="2"/>
+          <circle cx="205" cy="95" r="34" fill="none" stroke="#38bdf8" stroke-width="2"/>
+          <line x1="95" y1="95" x2="95" y2="55" stroke="#9fe8ff" stroke-width="2.5"/>
+          <line x1="205" y1="95" x2="223" y2="65" stroke="#9fe8ff" stroke-width="2.5"/>
+          <line x1="129" y1="95" x2="171" y2="95" stroke="#48515c" stroke-dasharray="3,3"/>
+        </svg>`;
+      document.getElementById("spin-fallback-note").hidden = false;
+    }
+
+    async function initSpin() {
+      try {
+        const THREE = await import("three");
+        const { OrbitControls } = await import("three/addons/controls/OrbitControls.js");
+        const { EffectComposer } = await import("three/addons/postprocessing/EffectComposer.js");
+        const { RenderPass } = await import("three/addons/postprocessing/RenderPass.js");
+        const { UnrealBloomPass } = await import("three/addons/postprocessing/UnrealBloomPass.js");
+
+        const canvas = document.getElementById("spin-canvas");
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0c10);
+        const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 50);
+        camera.position.set(0, 1.6, 4.2);
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+        scene.add(new THREE.AmbientLight(0x334155, 0.6));
+        const keyLight = new THREE.PointLight(0x38bdf8, 2.2, 14, 2);
+        keyLight.position.set(2.5, 2, 2);
+        scene.add(keyLight);
+        const rimLight = new THREE.PointLight(0xffffff, 0.7, 14, 2);
+        rimLight.position.set(-2.5, -1, -2);
+        scene.add(rimLight);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.08;
+        controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+        controls.minDistance = 2.2;
+        controls.maxDistance = 7;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+
+        const glassMat = () => new THREE.MeshPhysicalMaterial({
+          color: 0x1b2735, transparent: true, opacity: 0.4,
+          roughness: 0.25, metalness: 0.1, clearcoat: 0.6, clearcoatRoughness: 0.3
+        });
+        const wireMat = () => new THREE.MeshBasicMaterial({ color: 0x30363d, wireframe: true, transparent: true, opacity: 0.35 });
+
+        function makeParticle(x) {
+          const group = new THREE.Group();
+          group.add(new THREE.Mesh(new THREE.SphereGeometry(0.7, 32, 24), glassMat()));
+          group.add(new THREE.Mesh(new THREE.SphereGeometry(0.702, 20, 14), wireMat()));
+          const arrow = new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 0), 1, 0x9fe8ff, 0.14, 0.08);
+          group.add(arrow);
+          group.position.set(x, 0, 0);
+          scene.add(group);
+          return { group, arrow };
+        }
+        const alice = makeParticle(-1.6);
+        const bob = makeParticle(1.6);
+
+        // faint dashed correlation line between them
+        const lineGeo = new THREE.BufferGeometry().setFromPoints([
+          new THREE.Vector3(-0.9, 0, 0), new THREE.Vector3(0.9, 0, 0)
+        ]);
+        const dashLine = new THREE.LineSegments(lineGeo, new THREE.LineDashedMaterial({ color: 0x38bdf8, dashSize: 0.08, gapSize: 0.06, transparent: true, opacity: 0.5 }));
+        dashLine.computeLineDistances();
+        scene.add(dashLine);
+
+        // ambient background sprites using the shared texture, standing in for vacuum/field texture
+        const loader = new THREE.TextureLoader();
+        loader.load(SPRITE_URL, (tex) => {
+          const spriteMat = new THREE.SpriteMaterial({ map: tex, color: 0x9fe8ff, transparent: true, opacity: 0.35, depthWrite: false });
+          for (let i = 0; i < 10; i++) {
+            const s = new THREE.Sprite(spriteMat.clone());
+            const r = 3 + Math.random() * 1.5;
+            const theta = Math.random() * Math.PI * 2;
+            const yPos = (Math.random() - 0.5) * 2;
+            s.position.set(Math.cos(theta) * r, yPos, Math.sin(theta) * r);
+            const scale = 0.3 + Math.random() * 0.4;
+            s.scale.set(scale, scale, 1);
+            scene.add(s);
+          }
+        });
+
+        const composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(canvas.clientWidth, canvas.clientHeight), 0.7, 0.4, 0.2);
+        composer.addPass(bloomPass);
+
+        function resize() {
+          const w = canvas.clientWidth, h = canvas.clientHeight;
+          camera.aspect = w / h; camera.updateProjectionMatrix();
+          renderer.setSize(w, h, false);
+          composer.setSize(w, h);
+          bloomPass.resolution.set(w, h);
+        }
+        window.addEventListener("resize", resize);
+        resize();
+
+        function setVectors() {
+          const aRad = (state.alphaDeg * Math.PI) / 180;
+          const bRad = (state.betaDeg * Math.PI) / 180;
+          alice.arrow.setDirection(new THREE.Vector3(Math.sin(aRad), Math.cos(aRad), 0).normalize());
+          bob.arrow.setDirection(new THREE.Vector3(Math.sin(bRad), Math.cos(bRad), 0).normalize());
+        }
+        updateSpinVectors = setVectors;
+        onAngleChange = () => { clearCorr(); setVectors(); };
+        setVectors();
+
+        (function loop() {
+          controls.update();
+          composer.render();
+          requestAnimationFrame(loop);
+        })();
+      } catch (err) {
+        showSpinFallback();
+      }
+    }
+    initSpin();
+  </script>
+</body>
+</html>
